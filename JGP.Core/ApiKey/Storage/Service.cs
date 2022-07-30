@@ -4,7 +4,7 @@
 // Created          : 07-29-2022
 //
 // Last Modified By : Joshua Gwynn-Palmer
-// Last Modified On : 07-29-2022
+// Last Modified On : 07-30-2022
 // ***********************************************************************
 // <copyright file="Service.cs" company="Joshua Gwynn-Palmer">
 //     Joshua Gwynn-Palmer
@@ -31,11 +31,13 @@ namespace JGP.Core.ApiKey.Storage
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
         /// <param name="apiKey">The API key.</param>
-        public Service(string serviceName, string apiKey)
+        /// <param name="url">The URL.</param>
+        public Service(string serviceName, string apiKey, string? url = null)
         {
             ApiKey = apiKey;
             ServiceId = Guid.NewGuid();
             ServiceName = serviceName;
+            Url = url;
         }
 
         /// <summary>
@@ -55,15 +57,38 @@ namespace JGP.Core.ApiKey.Storage
         /// </summary>
         /// <value>The name of the service.</value>
         public string ServiceName { get; set; }
+
         /// <summary>
-        ///     Updates the specified service name.
+        ///     Gets or sets the URL.
+        /// </summary>
+        /// <value>The URL.</value>
+        public string? Url { get; set; }
+
+        /// <summary>
+        ///     Sets the name.
         /// </summary>
         /// <param name="serviceName">Name of the service.</param>
+        public void SetName(string serviceName)
+        {
+            ServiceName = serviceName;
+        }
+
+        /// <summary>
+        ///     Sets the API key.
+        /// </summary>
         /// <param name="apiKey">The API key.</param>
-        public void Update(string serviceName, string apiKey)
+        public void SetApiKey(string apiKey)
         {
             ApiKey = apiKey;
-            ServiceName = serviceName;
+        }
+
+        /// <summary>
+        ///     Sets the URL.
+        /// </summary>
+        /// <param name="url">The URL.</param>
+        public void SetUrl(string? url)
+        {
+            Url = url;
         }
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,16 +7,14 @@
 	<Description>Adds common core functionality</Description>
 	<Authors>Joshua Gwynn-Palmer</Authors>
 	<Copyright>Joshua Gwynn-Palmer</Copyright>
-	<Version>1.0.1</Version>
+	<Version>1.0.2</Version>
 	<PackageId>JGP.Core</PackageId>
 	<PackageDescription>Adds common core functionality</PackageDescription>
 	<RepositoryUrl>https://github.com/gwynnPalmer/JGP.Core</RepositoryUrl>
-	<PackageReadmeFile>readme.md</PackageReadmeFile>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-	<None Include="README.md" Pack="true" PackagePath="\"/>
 	<PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />

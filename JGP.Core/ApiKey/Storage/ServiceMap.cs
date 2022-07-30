@@ -38,6 +38,9 @@ internal class ServiceMap : IEntityTypeConfiguration<Service>
             .IsRequired()
             .HasMaxLength(50);
 
+        builder.Property(x => x.Url)
+            .HasMaxLength(200);
+
         builder.Property(x => x.ApiKey)
             .IsRequired()
             .HasMaxLength(36);
@@ -54,6 +57,7 @@ internal class ServiceMap : IEntityTypeConfiguration<Service>
         // Table & Column Mappings.
         builder.Property(x => x.ServiceId).HasColumnName("ServiceId");
         builder.Property(x => x.ServiceName).HasColumnName("ServiceName");
+        builder.Property(x => x.Url).HasColumnName("Url");
         builder.Property(x => x.ApiKey).HasColumnName("ApiKey");
     }
 }

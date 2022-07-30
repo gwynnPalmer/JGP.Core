@@ -42,3 +42,11 @@
 		    options.DefaultAuthenticateScheme = ApiKeyAuthenticationSettings.DefaultScheme;
 		    options.DefaultChallengeScheme = ApiKeyAuthenticationSettings.DefaultScheme;
 		}).AddApiKeyManagement(settings);
+
+	==========
+	Consumption of API Services
+	==========
+	Registering the Options (IServiceCollection and IConfiguration REQUIRED):
+	[STEP 1] services.RegisterApiKeyOptions(configuration);
+	[STEP 2] Inject the options into your HttpClient and use the Url as the Base Url for all requests.
+	
