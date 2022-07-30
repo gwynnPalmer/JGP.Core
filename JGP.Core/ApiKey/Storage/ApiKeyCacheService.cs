@@ -12,22 +12,25 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace JGP.Core.Api.Authentication;
+namespace JGP.Core.ApiKey.Storage;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using Storage;
 
+/// <summary>
+///     Interface IApiKeyCacheService
+///     Implements the <see cref="System.IDisposable" />
+/// </summary>
+/// <seealso cref="System.IDisposable" />
 public interface IApiKeyCacheService : IDisposable
 {
-
     /// <summary>
     ///     Get service as an asynchronous operation.
     /// </summary>
     /// <param name="serviceId">The service identifier.</param>
     /// <param name="serviceName">Name of the service.</param>
     /// <returns>A Task&lt;Service&gt; representing the asynchronous operation.</returns>
-    /// <exception cref="System.ArgumentException">Service not found - serviceId</exception>
+    /// <exception cref="ArgumentException">Service not found - serviceId</exception>
     ValueTask<Service> GetServiceAsync(Guid serviceId, string serviceName);
 }
 
@@ -65,7 +68,6 @@ public class ApiKeyCacheService : IApiKeyCacheService
     public void Dispose()
     {
         _context?.Dispose();
-        _memoryCache?.Dispose();
     }
 
     #endregion

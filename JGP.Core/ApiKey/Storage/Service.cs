@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace JGP.Core.Api.Storage
+namespace JGP.Core.ApiKey.Storage
 {
     /// <summary>
     ///     Class Service.

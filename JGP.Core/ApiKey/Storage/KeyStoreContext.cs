@@ -12,7 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace JGP.Core.Api.Storage
+namespace JGP.Core.ApiKey.Storage
 {
     using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +26,7 @@ namespace JGP.Core.Api.Storage
         /// <summary>
         ///     The connection string
         /// </summary>
-        private readonly string _localConnectionString =
+        private readonly string _connectionString =
             @"Server=.;Database=KeyStore;Trusted_Connection=True;TrustServerCertificate=True;";
 
         /// <summary>
@@ -39,6 +39,11 @@ namespace JGP.Core.Api.Storage
         public KeyStoreContext()
         {
             base.Database.SetCommandTimeout(1000);
+        }
+
+        public KeyStoreContext(string connectionString)
+        {
+            _connectionString = connectionString;
         }
 
         /// <summary>
@@ -88,7 +93,7 @@ namespace JGP.Core.Api.Storage
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(_localConnectionString);
+                optionsBuilder.UseSqlServer(_connectionString);
             }
         }
 

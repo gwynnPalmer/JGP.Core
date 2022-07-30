@@ -12,13 +12,20 @@
 // <summary></summary>
 // ***********************************************************************
 
-namespace JGP.Core.Api.Authentication;
+namespace JGP.Core.ApiKey.Authentication;
+
+using Microsoft.AspNetCore.Authentication;
 
 /// <summary>
 ///     Class ApiKeyAuthenticationSettings.
 /// </summary>
-public class ApiKeyAuthenticationSettings
+public class ApiKeyAuthenticationSettings : AuthenticationSchemeOptions
 {
+    /// <summary>
+    ///     The default scheme
+    /// </summary>
+    public const string DefaultScheme = "API Key";
+
     /// <summary>
     ///     The configuration section name
     /// </summary>
@@ -27,7 +34,7 @@ public class ApiKeyAuthenticationSettings
     /// <summary>
     ///     The header name
     /// </summary>
-    public string HeaderName => "X-Api-Key";
+    public const string HeaderName = "X-Api-Key";
 
     /// <summary>
     ///     Gets or sets the service identifier.
