@@ -49,6 +49,7 @@ namespace JGP.Core.Services
         /// </summary>
         /// <value>The outcome.</value>
         public ActionOutcome Outcome { get; set; }
+
         /// <summary>
         ///     Gets the default receipt.
         /// </summary>
@@ -262,6 +263,7 @@ namespace JGP.Core.Services
                 ? InfoEntries.FirstOrDefault(entry => entry.Key == key)?.Value
                 : null;
         }
+
         /// <summary>
         ///     Merges the specified action receipt.
         /// </summary>
@@ -284,6 +286,7 @@ namespace JGP.Core.Services
             };
             return this;
         }
+
         /// <summary>
         ///     Class KeyConstants.
         /// </summary>
