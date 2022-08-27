@@ -198,6 +198,7 @@ namespace JGP.Core.Services.Extensions.Web
         /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
         public static async Task<ActionReceipt?> ToActionReceiptAsync(this HttpResponseMessage response)
         {
+            // TODO: Fix Linq bug.
             var content = await response.Content.ReadAsStringAsync();
             if (!content.Contains(ProblemDetailsKey) && !content.Contains(SemanticsKey))
             {
