@@ -20,13 +20,13 @@ namespace JGP.Core.Serialization
 
     /// <summary>
     ///     Class ActionReceiptConverter.
-    ///     Implements the <see cref="System.Text.Json.Serialization.JsonConverter{JGP.Core.Services.ActionReceipt}" />
+    ///     Implements the <see cref="JsonConverter{ActionReceipt}" />
     /// </summary>
-    /// <seealso cref="System.Text.Json.Serialization.JsonConverter{JGP.Core.Services.ActionReceipt}" />
+    /// <seealso cref="JsonConverter{ActionReceipt}" />
     public class ActionReceiptConverter : JsonConverter<ActionReceipt>
     {
         /// <summary>
-        ///     Reads and converts the JSON to type <typeparamref name="T" />.
+        ///     Reads and converts the JSON to type <see cref="ActionReceipt" />.
         /// </summary>
         /// <param name="reader">The reader.</param>
         /// <param name="typeToConvert">The type to convert.</param>
@@ -37,7 +37,7 @@ namespace JGP.Core.Serialization
         {
             var model = JsonSerializer.Deserialize<ActionReceiptModel>(ref reader, options);
 
-            return model == null ? null : model.GetActionReceipt();
+            return model?.GetActionReceipt();
         }
 
         /// <summary>

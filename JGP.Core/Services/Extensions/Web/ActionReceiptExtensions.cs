@@ -16,6 +16,7 @@ namespace JGP.Core.Services.Extensions.Web
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using Newtonsoft.Json;
     using JsonSerializer = System.Text.Json.JsonSerializer;
 
@@ -117,7 +118,7 @@ namespace JGP.Core.Services.Extensions.Web
         }
 
         /// <summary>
-        ///     Converts to actionreceipt.
+        ///     Converts to <see cref="ActionReceipt"/>.
         /// </summary>
         /// <param name="problemDetails">The problem details.</param>
         /// <returns>ActionReceipt.</returns>
@@ -144,7 +145,7 @@ namespace JGP.Core.Services.Extensions.Web
         }
 
         /// <summary>
-        ///     Converts to actionresult.
+        ///     Converts to <see cref="IActionResult"/>.
         /// </summary>
         /// <param name="actionReceipt">The action receipt.</param>
         /// <returns>IActionResult.</returns>
@@ -166,7 +167,7 @@ namespace JGP.Core.Services.Extensions.Web
         }
 
         /// <summary>
-        ///     Converts to problemdetails.
+        ///     Converts to <see cref="ProblemDetails"/>.
         /// </summary>
         /// <param name="actionReceipt">The action receipt.</param>
         /// <param name="title">The title.</param>
@@ -229,6 +230,22 @@ namespace JGP.Core.Services.Extensions.Web
             }
 
             return problemDetails;
+        }
+
+        /// <summary>
+        ///     Adds the model validation errors.
+        /// </summary>
+        /// <param name="modelState">State of the model.</param>
+        /// <param name="actionReceipt">The action receipt.</param>
+        public static void AddModelValidationErrors(this ModelStateDictionary modelState, ActionReceipt actionReceipt)
+        {
+            foreach (var error in actionReceipt.Errors)
+            {
+                if (Guid.TryParse(error.Key, out _)) continue;
+
+                var errorMessage = string.Join(", ", error.Value);
+                modelState.AddModelError(error.Key, errorMessage);
+            }
         }
     }
 }

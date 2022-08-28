@@ -46,7 +46,7 @@ namespace JGP.Core.Services
         public List<InfoEntry> InfoEntries { get; set; } = new();
 
         /// <summary>
-        ///     Converts to problemdetails.
+        ///     Converts to <see cref="ProblemDetails"/>.
         /// </summary>
         /// <returns>ProblemDetails.</returns>
         public ProblemDetails ToProblemDetails()
