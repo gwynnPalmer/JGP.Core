@@ -15,7 +15,7 @@ Example usage:
         		var target = await FindSomethingAsync(someClass.SomeProperty);
         		if (target == null)
         		{
-        			return ActionReceipt.GetNotFoundReceipt("Couldn't find target.'");
+        			return ActionReceipt.GetNotFoundReceipt("Couldn't find target.");
         		}
         
         		target.Update(someClass);
